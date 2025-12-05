@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text('Firebase Connected ✅')),
         body: const Center(
-          child: Text('Listening for notifications...'),
+          child: Text('test email build'),
         ),
       ),
     );

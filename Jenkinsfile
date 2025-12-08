@@ -5,24 +5,25 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building project...'
-
+                // لو حابب تعمل Build حقيقي لFlutter:
+                // bat 'flutter build apk'
             }
         }
     }
 
     post {
-        success {
+        always {
+            // هنبعت الإيميل بعد أي Build
             emailext(
-                subject: "jenkins Build Successful",
-                body: "Hey,Your Jenkins build completed successfully!",
-                to: "andrewakram75@gmail.com"
-            )
-        }
-        failure {
-            emailext(
-                subject: "jenkins build failed",
-                body: "Hey,Your Jenkins build failed. Check the Jenkins console output for details.",
-                to: "andrewakram75@gmail.com"
+                to: 'andrewakram75@gmail.com',  // حط إيميلك هنا
+                subject: "Jenkins Build: ${currentBuild.fullDisplayName}",
+                body: """
+                <p>Build finished with status: <b>${currentBuild.currentResult}</b></p>
+                <p>Job: ${env.JOB_NAME}</p>
+                <p>Build Number: ${env.BUILD_NUMBER}</p>
+                <p>Check console output: <a href='${env.BUILD_URL}'>here</a></p>
+                """,
+                mimeType: 'text/html'
             )
         }
     }

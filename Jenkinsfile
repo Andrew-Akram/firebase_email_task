@@ -5,17 +5,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building project...'
-                // لو حابب تعمل Build حقيقي لFlutter:
-                // bat 'flutter build apk'
+
             }
         }
     }
 
     post {
         always {
-            // هنبعت الإيميل بعد أي Build
+
             emailext(
-                to: 'andrewakram75@gmail.com',  // حط إيميلك هنا
+                to: 'andrewakram75@gmail.com',
                 subject: "Jenkins Build: ${currentBuild.fullDisplayName}",
                 body: """
                 <p>Build finished with status: <b>${currentBuild.currentResult}</b></p>

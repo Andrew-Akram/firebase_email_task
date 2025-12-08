@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
       home: Scaffold(
-        appBar: AppBar(title: const Text('Firebase Connected ✅')),
+        appBar: AppBar(title: const Text('Firebase Connecteddd ✅')),
         body: const Center(
           child: Text('test email build'),
         ),
